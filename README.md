@@ -1,4 +1,4 @@
-# gwen bot v1.0
+# [gwen bot v1.0](https://gwenpy.carrd.co/)
 
 A fast bot with top of the line moderation, media download, and mini-games. ~~nah this shit is mid.~~
 
@@ -14,5 +14,13 @@ run this shit :
 ```
 pip install -r requirements.txt
 ```
-
+## Running the bot
+cd into the directory you cloned the repo to and run:
+```
+py gwen.py
+```
+or, if you're using Linux:
+```
+python3 gwen.py
+```
 
