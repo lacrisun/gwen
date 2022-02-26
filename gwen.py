@@ -8,6 +8,7 @@ load_dotenv()
 
 activity = nextcord.Activity(activity=nextcord, type=nextcord.ActivityType.watching, name="$porn")
 client = commands.Bot(command_prefix="$", activity=activity, status=nextcord.Status.online)
+client.remove_command('help')
 
 #On ready
 @client.event
@@ -212,7 +213,7 @@ async def place_error(self, ctx, error):
         await ctx.reply("please make sure to enter an integer.")
 
 @client.command()
-async def list(ctx):
+async def help(ctx):
     em = nextcord.Embed(title="List of commands", colour=nextcord.Color.from_rgb(87, 7, 0))
     em.add_field(name="Admin", value="- $kick\nkicks a member\n\n- $ban\nbans a member\n\n- $timeout\nputs a member in timeout\n\n- $unban\nunbans a member\n\n- $untimeout\nputs a member out from timeout\n\n", inline=False)
     em.add_field(name="General", value="- $ping\ndisplays the bot's latency\n\n- $info\ndisplays info about the botn\n- $whois\ndisplays info about a user\n\n", inline=False)
