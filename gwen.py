@@ -6,7 +6,7 @@ from nextcord.ext import commands
 from dotenv import load_dotenv
 load_dotenv()
 
-activity = nextcord.Activity(activity=nextcord, type=nextcord.ActivityType.watching, name="$erotic fanfictiton")
+activity = nextcord.Activity(activity=nextcord, type=nextcord.ActivityType.watching, name="$porn")
 client = commands.Bot(command_prefix="$", activity=activity, status=nextcord.Status.online)
 
 #On ready
@@ -41,6 +41,10 @@ async def on_command_error(ctx, error):
 @client.command()
 async def ping(ctx):
     await ctx.reply(f'**pong! message sent in {round(client.latency * 1000)}ms**')
+
+@client.command()
+async def porn(ctx):
+    await ctx.reply('no')
 
 #info bot
 @client.command()
