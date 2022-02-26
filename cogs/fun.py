@@ -117,7 +117,7 @@ class Fun(commands.Cog):
         idk = cl.media_pk_from_url(url)
 
         video_url = cl.media_info(idk).video_url
-        amongus = cl.video_download_by_url(video_url, "gwenbot")
+        amongus = cl.video_download_by_url(video_url, "gwenbot", 'C:\Users\AXIOO\Documents\GitHub\gwen\media')
         await ctx.send(file=nextcord.File(amongus))
         os.remove(amongus)
 
@@ -128,7 +128,7 @@ class Fun(commands.Cog):
         cl = Client()
         idk = cl.media_pk_from_url(url)
 
-        amongus = cl.album_download(idk)
+        amongus = cl.album_download(idk, 'C:\Users\AXIOO\Documents\GitHub\gwen\media')
         for f in amongus:
             all_files = f
             await ctx.send(file=nextcord.File(all_files))
@@ -142,7 +142,7 @@ class Fun(commands.Cog):
         idk = cl.media_pk_from_url(url)
 
         photo_url = cl.media_info(idk).thumbnail_url
-        amongus = cl.photo_download_by_url(photo_url, "gwenbot")
+        amongus = cl.photo_download_by_url(photo_url, "gwenbot", 'C:\Users\AXIOO\Documents\GitHub\gwen\media')
         await ctx.send(file=nextcord.File(amongus))
         os.remove(amongus)
 
