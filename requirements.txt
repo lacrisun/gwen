@@ -1,5 +1,4 @@
 nextcord
-python-dotenv
 dotenv
 instagrapi
 humanfriendly
