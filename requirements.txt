@@ -1,5 +1,7 @@
 nextcord
-dotenv
+python-dotenv
 instagrapi
 humanfriendly
 aiohttp
+aiosignal
+async-timeout
