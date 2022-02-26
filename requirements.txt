@@ -5,3 +5,4 @@ humanfriendly
 aiohttp
 aiosignal
 async-timeout
+Pillow
