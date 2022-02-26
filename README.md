@@ -1,6 +1,6 @@
 # [gwen bot v1.0](https://gwenpy.carrd.co/)
 
-##(this bot is still in beta, so keep that in mind while using it. i will keep updating it with new features.)##
+**(this bot is still in beta, so keep that in mind while using it. i will keep updating it with new features.)**
 
 A fast bot with top of the line moderation, media download, and mini-games. ~~nah this shit is mid.~~
 
