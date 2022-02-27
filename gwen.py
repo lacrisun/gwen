@@ -218,7 +218,7 @@ async def help(ctx):
     em = nextcord.Embed(title="List of commands", colour=nextcord.Color.from_rgb(87, 7, 0))
     em.add_field(name="Admin", value="- $kick\nkicks a member\n\n- $ban\nbans a member\n\n- $timeout\nputs a member in timeout\n\n- $unban\nunbans a member\n\n- $untimeout\nputs a member out from timeout\n\n", inline=False)
     em.add_field(name="General", value="- $ping\ndisplays the bot's latency\n\n- $info\ndisplays info about the botn\n- $whois\ndisplays info about a user\n\n", inline=False)
-    em.add_field(name="Fun", value="- $avatar\nposts the user's avatar\n\n- $say\ndo i really have to explain this?\n\n- $question\nask gwen a question\n\n- $urban\nlook a definition of a word\n\n- $igvideo\ndownloads an instagram video\n\n- $igalbum\ndownloads an instagram album\n\n- $igphoto\ndownloads an instagram photo\n\n- $coinflip\nflips a coin, what else do you expect?\n\n- $ttt\nplays tictactoe, tag a user to play with\n\n", inline=False)
+    em.add_field(name="Fun", value="- $avatar\nposts the user's avatar\n\n- $say\ndo i really have to explain this?\n\n- $question\nask gwen a question\n\n- $urban\nlook a definition of a word\n\n", inline=False)
     await ctx.send(embed=em)
 
 client.run(os.getenv('TOKEN'))
