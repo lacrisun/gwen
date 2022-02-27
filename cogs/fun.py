@@ -3,7 +3,6 @@ import random
 import os
 import requests
 import re
-from instagrapi import Client
 from aiohttp import ClientSession
 from nextcord.ext import commands
 
