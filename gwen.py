@@ -38,6 +38,7 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CommandNotFound):
         await ctx.reply("command not found, please read the command list using $list")
 
+#kys
 @client.event
 async def on_message(message):
     if message.author == client.user:
