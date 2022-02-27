@@ -1,9 +1,20 @@
 import nextcord
 import random
 import os
+import requests
+import re
 from instagrapi import Client
 from aiohttp import ClientSession
 from nextcord.ext import commands
+
+def get_response(url):
+    r = requests.get(url)
+    while r.status_code != 200:
+        r = requests.get(url)
+    return r.text
+
+def prepare_url(matches):
+    return list({match.replace("\\u0026", "&") for match in matches})
 
 class Coinflip(nextcord.ui.View):
     def __init__(self):
@@ -109,42 +120,29 @@ class Fun(commands.Cog):
                 embed.add_field(name=term, value=definition, inline=False)
                 await ctx.send(embed=embed)
 
-    #downloads an instagram video
-    @commands.command(aliases=['igvid'])
-    async def igvideo(self, ctx, url):
-        await ctx.reply("fetching files...")
-        cl = Client()
-        idk = cl.media_pk_from_url(url)
+    @commands.command()
+    async def igdl(self, ctx, url):
+        response = get_response(url)
 
-        video_url = cl.media_info(idk).video_url
-        amongus = cl.video_download_by_url(video_url, "gwenbot", "/tmp")
-        await ctx.send(file=nextcord.File(amongus))
-        os.remove(amongus)
+        vid_matches = re.findall('"video_url":"([^"]+)"', response)
+        pic_matches = re.findall('"display_url":"([^"]+)"', response)
 
-    #downloads an instgram album
-    @commands.command(aliases=['igalbum'])
-    async def ihavenoidea(self, ctx, url):
-        await ctx.reply("fetching files...")
-        cl = Client()
-        idk = cl.media_pk_from_url(url)
+        vid_urls = prepare_url(vid_matches)
+        pic_urls = prepare_url(pic_matches)
 
-        amongus = cl.album_download(idk, "/tmp")
-        for f in amongus:
-            all_files = f
-            await ctx.send(file=nextcord.File(all_files))
-            os.remove(all_files) 
+        if vid_urls:
+            await ctx.send(format('\n'.join(vid_urls)))
+        if pic_urls:
+            await ctx.send(format('\n'.join(pic_urls)))
 
-    #downloads an instagram photo
-    @commands.command(aliases=['igphoto'])
-    async def instaphoto(self, ctx, url):
-        await ctx.reply("fetching files...")
-        cl = Client()
-        idk = cl.media_pk_from_url(url)
+        if not (vid_urls or pic_urls):
+            await ctx.reply("i don't recognise that file..")
 
-        photo_url = cl.media_info(idk).thumbnail_url
-        amongus = cl.photo_download_by_url(photo_url, "gwenbot", "/tmp")
-        await ctx.send(file=nextcord.File(amongus))
-        os.remove(amongus)
+    @igdl.error
+    async def igdl_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.reply("missing required argument, please enter the command correctly.")
+        
 
     @commands.command()
     @commands.guild_only()
