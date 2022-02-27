@@ -36,7 +36,7 @@ async def reload(ctx, extension):
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CommandNotFound):
-        await ctx.reply("command not found, please read the command list using $list")
+        await ctx.reply("command not found, please read the command list using $help")
 
 #test the latency of the bot
 @client.command()
