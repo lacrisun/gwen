@@ -143,7 +143,6 @@ class Fun(commands.Cog):
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.reply("missing required argument, please enter the command correctly.")
         
-
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 30, commands.BucketType.user)
