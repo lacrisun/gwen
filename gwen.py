@@ -217,7 +217,7 @@ async def place_error(self, ctx, error):
 async def help(ctx):
     em = nextcord.Embed(title="List of commands", colour=nextcord.Color.from_rgb(87, 7, 0))
     em.add_field(name="Admin", value="- $kick\nkicks a member\n\n- $ban\nbans a member\n\n- $timeout\nputs a member in timeout\n\n- $unban\nunbans a member\n\n- $untimeout\nputs a member out from timeout\n\n", inline=False)
-    em.add_field(name="General", value="- $ping\ndisplays the bot's latency\n\n- $info\ndisplays info about the botn\n- $whois\ndisplays info about a user\n\n", inline=False)
+    em.add_field(name="General", value="- $ping\ndisplays the bot's latency\n\n- $info\ndisplays info about the bot\n\n- $whois\ndisplays info about a user\n\n", inline=False)
     em.add_field(name="Fun", value="- $avatar\nposts the user's avatar\n\n- $say\ndo i really have to explain this?\n\n- $question\nask gwen a question\n\n- $urban\nlook a definition of a word\n\n", inline=False)
     await ctx.send(embed=em)
 
