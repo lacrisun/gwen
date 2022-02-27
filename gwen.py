@@ -38,6 +38,14 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CommandNotFound):
         await ctx.reply("command not found, please read the command list using $help")
 
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content == 'kys':
+        await message.channel.send('https://tenor.com/view/ltg-low-tier-god-yskysn-ltg-thunder-thunder-gif-23523876')
+
 #test the latency of the bot
 @client.command()
 async def ping(ctx):

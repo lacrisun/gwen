@@ -134,8 +134,7 @@ class Fun(commands.Cog):
             await ctx.send(format('\n'.join(vid_urls)))
         if pic_urls:
             await ctx.send(format('\n'.join(pic_urls)))
-
-        if not (vid_urls or pic_urls):
+        if not (vid_urls and pic_urls):
             await ctx.reply("i don't recognise that file..")
 
     @igdl.error
