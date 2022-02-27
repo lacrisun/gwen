@@ -1,20 +1,8 @@
 import nextcord
 import random
 import os
-from instagrapi import Client
-import requests
-import re
 from aiohttp import ClientSession
 from nextcord.ext import commands
-
-def get_response(url):
-    r = requests.get(url)
-    while r.status_code != 200:
-        r = requests.get(url)
-    return r.text
-
-def prepare_url(matches):
-    return list({match.replace("\\u0026", "&") for match in matches})
 
 class Coinflip(nextcord.ui.View):
     def __init__(self):
@@ -119,28 +107,6 @@ class Fun(commands.Cog):
                 definition = r['list'][0]['definition']
                 embed.add_field(name=term, value=definition, inline=False)
                 await ctx.send(embed=embed)
-
-    @commands.command()
-    async def igdl(self, ctx, url):
-        response = get_response(url)
-
-        vid_matches = re.findall('"video_url":"([^"]+)"', response)
-        pic_matches = re.findall('"display_url":"([^"]+)"', response)
-
-        vid_urls = prepare_url(vid_matches)
-        pic_urls = prepare_url(pic_matches)
-
-        if vid_urls:
-            await ctx.send(format('\n'.join(vid_urls)))
-        if pic_urls:
-            await ctx.send(format('\n'.join(pic_urls)))
-        if not (vid_urls or pic_urls):
-            await ctx.reply("i don't recognise that file..")
-
-    @igdl.error
-    async def igdl_error(self, ctx, error):
-        if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.reply("missing required argument, please enter the command correctly.")
         
     @commands.command()
     @commands.guild_only()

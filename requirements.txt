@@ -1,6 +1,5 @@
 nextcord
 python-dotenv
-instagrapi
 humanfriendly
 aiohttp
 aiosignal
