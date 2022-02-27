@@ -111,22 +111,7 @@ class Fun(commands.Cog):
                 embed.add_field(name=term, value=definition, inline=False)
                 await ctx.send(embed=embed)
         
-    @commands.command()
-    async def qrcode(self, ctx, *, value):
-        url = "https://codzz-qr-cods.p.rapidapi.com/getQrcode"
 
-        querystring = {"type":"text","value":str(value)}
-
-        headers = {
-            'x-rapidapi-host': "codzz-qr-cods.p.rapidapi.com",
-            'x-rapidapi-key': "a78e8a6be1mshc0296c15e52ea11p1b27cdjsna9602af63066"
-            }
-
-        async with ClientSession() as session:
-            async with session.get(url, headers=headers, params=querystring) as response:
-                t = await response.json()
-                code = t['url']
-                await ctx.send(code)
        
     @commands.command()
     @commands.guild_only()
