@@ -1,6 +1,7 @@
 import nextcord
 import random
 import os
+from instagrapi import Client
 import requests
 import re
 from aiohttp import ClientSession
