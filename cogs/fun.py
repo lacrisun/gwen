@@ -2,6 +2,7 @@ import nextcord
 import random
 import os
 import requests
+import re
 from aiohttp import ClientSession
 from nextcord.ext import commands
 
