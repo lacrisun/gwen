@@ -107,7 +107,12 @@ class Fun(commands.Cog):
                 r = await response.json()
                 embed = nextcord.Embed(title=f"first result for : {term}", colour=nextcord.Color.from_rgb(87, 7, 0))
                 definition = r['list'][0]['definition']
+                thumbs_up = r['list'][0]['thumbs_up']
+                thumbs_down = r['list'][0]['thumbs_down']
+                example = r['list'][0]['example']
                 embed.add_field(name=term, value=definition, inline=False)
+                embed.add_field(name='example :', value=example, inline=False)
+                embed.set_footer(text=f'👍{thumbs_up} | 👎{thumbs_down}')
                 await ctx.send(embed=embed)
         
     @commands.command()
@@ -126,7 +131,7 @@ class Fun(commands.Cog):
                 t = await response.json()
                 code = t['url']
                 await ctx.send(code)
-       
+
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 30, commands.BucketType.user)
