@@ -9,6 +9,7 @@ load_dotenv()
 activity = nextcord.Activity(activity=nextcord, type=nextcord.ActivityType.watching, name="$porn")
 client = commands.Bot(command_prefix="$", activity=activity, status=nextcord.Status.online)
 client.remove_command('help')
+versionbot = "1.0.1"
 
 #On ready
 @client.event
@@ -51,7 +52,7 @@ async def porn(ctx):
 @client.command()
 async def info(ctx):
     server_amt = len(client.guilds)
-    em = nextcord.Embed(title="gwen v1.0", description="hello.\ni am CampCorp's personal assistant. totally not a dead person's brain digitalized into code.", colour=nextcord.Color.from_rgb(87, 7, 0))
+    em = nextcord.Embed(title=f"gwen v{versionbot}", description="hello.\ni am CampCorp's personal assistant. totally not a dead person's brain digitalized into code.", colour=nextcord.Color.from_rgb(87, 7, 0))
     em.add_field(name=f"currently serving :", value=f"{server_amt} servers.", inline=False)
     em.add_field(name="made by :", value="lacrisun", inline=False)
     em.add_field(name="source code :", value="you can view gwen's source code on [GitHub](https://github.com/gustcode/gwen).", inline=False)
@@ -214,10 +215,19 @@ async def place_error(self, ctx, error):
 
 @client.command()
 async def help(ctx):
+    user = ctx.author
     em = nextcord.Embed(title="List of commands", colour=nextcord.Color.from_rgb(87, 7, 0))
     em.add_field(name="Admin", value="- $kick\nkicks a member\n\n- $ban\nbans a member\n\n- $timeout\nputs a member in timeout\n\n- $unban\nunbans a member\n\n- $untimeout\nputs a member out from timeout\n\n", inline=False)
-    em.add_field(name="General", value="- $ping\ndisplays the bot's latency\n\n- $info\ndisplays info about the bot\n\n- $whois\ndisplays info about a user\n\n", inline=False)
+    em.add_field(name="General", value="- $ping\ndisplays the bot's latency\n\n- $info\ndisplays info about the bot\n\n- $whois\ndisplays info about a user\n\n- $inbox\ndisplay the bot's patch note\n\n", inline=False)
     em.add_field(name="Fun", value="- $avatar\nposts the user's avatar\n\n- $say\ndo i really have to explain this?\n\n- $question\nask gwen a question\n\n- $urban\nlook a definition of a word\n\n- $qrcode\ncreate a qrcode from text\n\n", inline=False)
-    await ctx.send(embed=em)
+    await user.send(embed=em)
+
+@client.command()
+async def inbox(ctx):
+    em = nextcord.Embed(title=f"Update {versionbot}", colour=nextcord.Color.from_rgb(87, 7, 0))
+    em.add_field(name="fixed issue where member gets timeout for nothing.", inline=False)
+    em.add_field(name="mod commands are now guild only.", inline=False)
+    em.add_field(name="added 20s timeout for coinflips.", inline=False)
+    em.add_field(name="help commands are now sent via DMs.", inline=False)
 
 client.run(os.getenv('TOKEN'))
