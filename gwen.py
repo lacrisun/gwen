@@ -225,7 +225,7 @@ async def help(ctx):
 @client.command()
 async def inbox(ctx):
     em = nextcord.Embed(title=f"Update v{versionbot}", colour=nextcord.Color.from_rgb(87, 7, 0))
-    em.add_field(name=f"v{versionbot}", value="- fixed issue where member gets timeout for nothing.\n\nmod commands are now guild only.\n\nadded 20s timeout for coinflips.\n\nhelp commands are now sent via DMs.\n\n", inline=False)
+    em.add_field(name=f"v{versionbot}", value="- fixed issue where member gets timeout for nothing.\n\n- mod commands are now guild only.\n\n- added 20s timeout for coinflips.\n\n- help commands are now sent via DMs.\n\n", inline=False)
     await ctx.send(embed=em)
 
 client.run(os.getenv('TOKEN'))
