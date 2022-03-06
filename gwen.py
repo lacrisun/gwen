@@ -229,5 +229,6 @@ async def inbox(ctx):
     em.add_field(name="mod commands are now guild only.", inline=False)
     em.add_field(name="added 20s timeout for coinflips.", inline=False)
     em.add_field(name="help commands are now sent via DMs.", inline=False)
+    await ctx.send(embed=em)
 
 client.run(os.getenv('TOKEN'))
