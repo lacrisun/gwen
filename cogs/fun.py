@@ -8,7 +8,7 @@ from nextcord.ext import commands
 
 class Coinflip(nextcord.ui.View):
     def __init__(self):
-        super().__init__()
+        super().__init__(timeout=20.0)
         self.value = None
 
     @nextcord.ui.button(label='heads', style=nextcord.ButtonStyle.green)
