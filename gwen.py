@@ -222,10 +222,4 @@ async def help(ctx):
     em.add_field(name="Fun", value="- $avatar\nposts the user's avatar\n\n- $say\ndo i really have to explain this?\n\n- $question\nask gwen a question\n\n- $urban\nlook a definition of a word\n\n- $qrcode\ncreate a qrcode from text\n\n", inline=False)
     await user.send(embed=em)
 
-@client.command()
-async def inbox(ctx):
-    em = nextcord.Embed(title=f"Update v{versionbot}", colour=nextcord.Color.from_rgb(87, 7, 0))
-    em.add_field(name=f"v{versionbot}", value="- fixed issue where member gets timeout for nothing.\n\n- mod commands are now guild only.\n\n- added 20s timeout for coinflips.\n\n- help commands are now sent via DMs.\n\n", inline=False)
-    await ctx.send(embed=em)
-
 client.run(os.getenv('TOKEN'))
