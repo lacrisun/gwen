@@ -19,6 +19,7 @@ class Moderation(commands.Cog):
         em = nextcord.Embed(title="gwen logs", colour=nextcord.Color.from_rgb(87, 7, 0))
         em.add_field(name="Moderation", value=f"{member.mention} kicked", inline=False)
         em.add_field(name="Reason", value=reason, inline=False)
+        em.set_footer(text= f'requested by {ctx.author.name}', icon_url=ctx.author.display_avatar)
         await channel.send(embed=em)
 
 
@@ -43,6 +44,7 @@ class Moderation(commands.Cog):
         em = nextcord.Embed(title="gwen logs", colour=nextcord.Color.from_rgb(87, 7, 0))
         em.add_field(name="Moderation", value=f"{member.mention} banned", inline=False)
         em.add_field(name="Reason", value=reason, inline=False)
+        em.set_footer(text= f'requested by {ctx.author.name}', icon_url=ctx.author.display_avatar)
         await channel.send(embed=em)
 
     #error handling for bans     
@@ -72,6 +74,7 @@ class Moderation(commands.Cog):
                 await ctx.reply(f'**{user.name}#{user.discriminator} has been unbanned.**')
                 em = nextcord.Embed(title="gwen logs", colour=nextcord.Color.from_rgb(87, 7, 0))
                 em.add_field(name="Moderation", value=f"{member.mention} unbanned", inline=False)
+                em.set_footer(text= f'requested by {ctx.author.name}', icon_url=ctx.author.display_avatar)
                 await channel.send(embed=em)
                 return
 
@@ -95,6 +98,7 @@ class Moderation(commands.Cog):
         em = nextcord.Embed(title="gwen logs", colour=nextcord.Color.from_rgb(87, 7, 0))
         em.add_field(name="Moderation", value=f"{member.mention} was muted for {time}", inline=False)
         em.add_field(name="Reason", value=reason, inline=False)
+        em.set_footer(text= f'requested by {ctx.author.name}', icon_url=ctx.author.display_avatar)
         await channel.send(embed=em)
 
     #error handling for timeout
@@ -117,6 +121,7 @@ class Moderation(commands.Cog):
         await ctx.reply(f'**timeout removed for {member.mention}**')
         em = nextcord.Embed(title="gwen logs", colour=nextcord.Color.from_rgb(87, 7, 0))
         em.add_field(name="Moderation", value=f"{member.mention} was unmuted", inline=False)
+        em.set_footer(text= f'requested by {ctx.author.name}', icon_url=ctx.author.display_avatar)
         await channel.send(embed=em)
 
     #untimeout error handling
